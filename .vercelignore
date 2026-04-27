@@ -1,0 +1,16 @@
+node_modules
+.angular
+dist
+.git
+.gitignore
+README.md
+DOCUMENTACION_TECNICA.md
+GUIA_DESPLIEGUES.md
+PASOS_DESPLIEGUES.md
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+.vscode
+.idea
