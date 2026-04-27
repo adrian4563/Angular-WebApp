@@ -1,0 +1,28 @@
+<div class="gallery-container">
+  <!-- Imagen Principal -->
+  <div class="main-image-container" *ngIf="selectedImage">
+    <img 
+      [src]="selectedImage.src" 
+      [alt]="selectedImage.alt"
+      class="main-image"
+    >
+    <p class="image-title">{{ selectedImage.title }}</p>
+  </div>
+
+  <!-- Miniaturas -->
+  <div class="thumbnails-container">
+    <div 
+      *ngFor="let image of images" 
+      class="thumbnail"
+      [ngClass]="{ 'selected': image.id === selectedImageId }"
+      (click)="selectImage(image.id)"
+      [title]="image.alt"
+    >
+      <img 
+        [src]="image.src" 
+        [alt]="image.alt"
+        class="thumbnail-image"
+      >
+    </div>
+  </div>
+</div>

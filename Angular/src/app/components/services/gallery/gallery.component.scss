@@ -1,0 +1,119 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.main-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow-xl);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid var(--border-color);
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--accent-primary);
+  }
+}
+
+.image-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  text-align: center;
+}
+
+.thumbnails-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.thumbnail {
+  cursor: pointer;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(124, 58, 237, 0);
+    transition: background 0.3s ease;
+    z-index: 2;
+  }
+
+  &:hover {
+    opacity: 1;
+    border-color: var(--accent-secondary);
+    transform: scale(1.08);
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.3);
+
+    &::before {
+      background: rgba(6, 182, 212, 0.1);
+    }
+  }
+
+  &.selected {
+    border-color: var(--accent-primary);
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    transform: scale(1.05);
+
+    &::before {
+      background: rgba(124, 58, 237, 0.15);
+    }
+  }
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .thumbnails-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .thumbnail {
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &.selected {
+      transform: scale(1.02);
+    }
+  }
+}

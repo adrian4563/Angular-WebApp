@@ -1,0 +1,79 @@
+<div class="blog-container">
+  <!-- Formulario para crear nuevo post -->
+  <div class="new-post-form">
+    <h3>Crear Nuevo Post</h3>
+    <div class="form-group">
+      <input 
+        type="text" 
+        placeholder="Título del post"
+        [(ngModel)]="newPost.title"
+        class="form-input"
+      >
+    </div>
+    <div class="form-group">
+      <textarea 
+        placeholder="Descripción del post"
+        [(ngModel)]="newPost.description"
+        class="form-textarea"
+        rows="3"
+      ></textarea>
+    </div>
+    <button (click)="addPost()" class="btn-add">Agregar Post</button>
+  </div>
+
+  <!-- Lista de posts -->
+  <div class="posts-list">
+    <div 
+      *ngFor="let post of posts" 
+      class="post-card"
+      [ngClass]="{ 'featured': post.featured }"
+    >
+      <!-- Modo edición -->
+      <div *ngIf="editingId === post.id" class="edit-form">
+        <input 
+          type="text" 
+          [(ngModel)]="editingTitle"
+          class="form-input"
+        >
+        <textarea 
+          [(ngModel)]="editingDescription"
+          class="form-textarea"
+          rows="3"
+        ></textarea>
+        <div class="edit-buttons">
+          <button (click)="saveEdit()" class="btn-save">Guardar</button>
+          <button (click)="cancelEdit()" class="btn-cancel">Cancelar</button>
+        </div>
+      </div>
+
+      <!-- Modo visualización -->
+      <div *ngIf="editingId !== post.id" class="post-content">
+        <div class="post-header">
+          <h4>{{ post.title }}</h4>
+          <span class="post-date">{{ formatDate(post.date) }}</span>
+        </div>
+        <p class="post-description">{{ post.description }}</p>
+        <div class="post-actions">
+          <button 
+            (click)="toggleFeatured(post)"
+            [class]="{ 'btn-featured': post.featured }"
+            class="btn-action"
+          >
+            {{ post.featured ? '⭐ Destacado' : '☆ Destacar' }}
+          </button>
+          <button (click)="startEdit(post)" class="btn-action btn-edit">
+            ✏️ Editar
+          </button>
+          <button (click)="deletePost(post.id)" class="btn-action btn-delete">
+            🗑️ Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje cuando no hay posts -->
+    <div *ngIf="posts.length === 0" class="no-posts">
+      <p>No hay posts aún. ¡Crea uno para comenzar!</p>
+    </div>
+  </div>
+</div>

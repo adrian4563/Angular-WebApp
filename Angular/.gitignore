@@ -1,0 +1,43 @@
+# Generated files
+dist/
+out-tsc/
+
+# Dependencies
+node_modules/
+
+# Compiled output
+*.js
+*.js.map
+
+# Angular
+.angular/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+build/
+.cache/
+
+# Logs
+npm-debug.log
+npm-error.log
+yarn-error.log
+
+# Optional files
+.sass-cache/
+.tmp/
+*.log
+
+# Coverage
+coverage/

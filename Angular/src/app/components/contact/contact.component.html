@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="contact-wrapper">
+    <h1>Contacto</h1>
+    <p class="subtitle">¿Dudas o sugerencias? Nos gustaría saber de ti</p>
+
+    <!-- Mensaje de éxito -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <!-- Formulario de contacto -->
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Tu nombre completo"
+          class="form-input"
+          [class.error]="hasError('name')"
+          (blur)="submitted = submitted || false"
+        >
+        <span 
+          *ngIf="hasError('name')" 
+          class="error-message"
+        >
+          {{ getErrorMessage('name') }}
+        </span>
+        <span 
+          *ngIf="!hasError('name') && getControls()['name'].touched && !getControls()['name'].errors" 
+          class="success-message"
+        >
+          ✓ Campo válido
+        </span>
+      </div>
+
+      <!-- Campo Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="tu@email.com"
+          class="form-input"
+          [class.error]="hasError('email')"
+          (blur)="submitted = submitted || false"
+        >
+        <span 
+          *ngIf="hasError('email')" 
+          class="error-message"
+        >
+          {{ getErrorMessage('email') }}
+        </span>
+        <span 
+          *ngIf="!hasError('email') && getControls()['email'].touched && !getControls()['email'].errors" 
+          class="success-message"
+        >
+          ✓ Email válido
+        </span>
+      </div>
+
+      <!-- Campo Mensaje -->
+      <div class="form-group">
+        <label for="message">Mensaje</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          placeholder="Escribe tu mensaje aquí..."
+          class="form-textarea"
+          [class.error]="hasError('message')"
+          rows="5"
+          (blur)="submitted = submitted || false"
+        ></textarea>
+        <span 
+          *ngIf="hasError('message')" 
+          class="error-message"
+        >
+          {{ getErrorMessage('message') }}
+        </span>
+        <span 
+          *ngIf="!hasError('message') && getControls()['message'].touched && !getControls()['message'].errors" 
+          class="success-message"
+        >
+          ✓ Mensaje válido
+        </span>
+      </div>
+
+      <!-- Botones -->
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          class="btn-submit"
+          [disabled]="contactForm.invalid && submitted"
+        >
+          Enviar Mensaje
+        </button>
+        <button 
+          type="reset" 
+          class="btn-reset"
+          (click)="contactForm.reset(); submitted = false"
+        >
+          Limpiar Formulario
+        </button>
+      </div>
+
+      <!-- Estado del formulario (solo para desarrollo) -->
+      <div class="form-status" *ngIf="contactForm">
+        <small>
+          <span *ngIf="contactForm.valid" class="badge badge-valid">✓ Formulario válido</span>
+          <span *ngIf="contactForm.invalid && submitted" class="badge badge-invalid">✗ Por favor completa todos los campos correctamente</span>
+        </small>
+      </div>
+    </form>
+
+    <!-- Información adicional -->
+    <div class="contact-info">
+      <h2>Otras formas de contacto</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <h3>📧 Email</h3>
+          <p>contacto&#64;ejerciciosangular.com</p>
+        </div>
+        <div class="info-item">
+          <h3>📞 Teléfono</h3>
+          <p>+34 900 123 456</p>
+        </div>
+        <div class="info-item">
+          <h3>📍 Ubicación</h3>
+          <p>Madrid, España</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

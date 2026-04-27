@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="container nav-content">
+    <div class="nav-logo">
+      <h1>Angular App</h1>
+    </div>
+    
+    <ul class="nav-menu">
+      <li><a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
+      <li><a routerLink="/servicios" routerLinkActive="active">Servicios</a></li>
+      <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button 
+        class="btn-theme" 
+        (click)="toggleTheme()"
+        [attr.aria-label]="isDarkTheme ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+      >
+        {{ isDarkTheme ? '☀️ Claro' : '🌙 Oscuro' }}
+      </button>
+    </div>
+  </div>
+</nav>
