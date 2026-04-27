@@ -7,6 +7,9 @@ README.md
 DOCUMENTACION_TECNICA.md
 GUIA_DESPLIEGUES.md
 PASOS_DESPLIEGUES.md
+COMANDOS_RAPIDOS.md
+RESUMEN_ESTADO.md
+EJERCICIO_*.md
 .env
 .env.local
 *.log
@@ -14,3 +17,5 @@ PASOS_DESPLIEGUES.md
 Thumbs.db
 .vscode
 .idea
+.github
+
