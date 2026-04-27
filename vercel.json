@@ -1,5 +1,5 @@
 {
   "buildCommand": "npm run build -- --configuration production",
-  "outputDirectory": "dist/angular",
+  "outputDirectory": "Angular/dist/angular-ejercicios",
   "framework": "angular"
 }
