@@ -1,6 +1,5 @@
 {
-  "buildCommand": "npm run build --prefix ./Angular -- --configuration production",
+  "buildCommand": "npm run build",
   "outputDirectory": "Angular/dist/angular-ejercicios",
-  "framework": "angular",
-  "installCommand": "npm install --prefix ./Angular"
+  "installCommand": "npm install"
 }

@@ -1,0 +1,12 @@
+{
+  "name": "angular-webapp-root",
+  "version": "1.0.0",
+  "description": "Aplicación Angular - Wrapper para Vercel",
+  "scripts": {
+    "install": "npm install --prefix Angular",
+    "build": "npm --prefix Angular run build -- --configuration production",
+    "start": "npm --prefix Angular start",
+    "dev": "npm --prefix Angular run dev"
+  },
+  "private": true
+}
